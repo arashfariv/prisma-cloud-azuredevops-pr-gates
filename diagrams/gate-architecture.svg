@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c53030"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f855a"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="600" fill="#1a202c">PR Gate Architecture</text>
+  <text x="450" y="54" text-anchor="middle" font-size="13" fill="#4a5568">Prisma Cloud + Azure DevOps — two independent layers, both required</text>
+
+  <!-- Developer -->
+  <rect x="50" y="100" width="160" height="80" rx="6" fill="#edf2f7" stroke="#4a5568" stroke-width="1.5"/>
+  <text x="130" y="135" text-anchor="middle" font-size="13" font-weight="600" fill="#1a202c">Developer</text>
+  <text x="130" y="155" text-anchor="middle" font-size="11" fill="#4a5568">opens pull request</text>
+
+  <!-- Arrow from Dev to ADO -->
+  <line x1="210" y1="140" x2="285" y2="140" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Azure DevOps box -->
+  <rect x="290" y="80" width="320" height="120" rx="6" fill="#e6f0ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="450" y="105" text-anchor="middle" font-size="14" font-weight="600" fill="#1e40af">Azure DevOps</text>
+
+  <rect x="305" y="120" width="290" height="35" rx="4" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="450" y="142" text-anchor="middle" font-size="11" fill="#1e3a8a">Branch policy: PR required + status check required</text>
+
+  <rect x="305" y="160" width="290" height="30" rx="4" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="450" y="180" text-anchor="middle" font-size="11" fill="#1e3a8a">Webhook: Pull Request Created/Updated</text>
+
+  <!-- Arrow from ADO to Prisma -->
+  <line x1="610" y1="140" x2="685" y2="140" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="647" y="130" text-anchor="middle" font-size="10" fill="#4a5568">webhook</text>
+
+  <!-- Prisma Cloud box -->
+  <rect x="690" y="80" width="180" height="120" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="780" y="105" text-anchor="middle" font-size="14" font-weight="600" fill="#15803d">Prisma Cloud</text>
+  <text x="780" y="130" text-anchor="middle" font-size="11" fill="#166534">scans PR diff</text>
+  <text x="780" y="150" text-anchor="middle" font-size="11" fill="#166534">evaluates against rules</text>
+  <text x="780" y="170" text-anchor="middle" font-size="11" fill="#166534">determines pass/fail</text>
+
+  <!-- Arrow from Prisma back to ADO -->
+  <line x1="780" y1="200" x2="780" y2="265" stroke="#4a5568" stroke-width="2"/>
+  <line x1="780" y1="265" x2="450" y2="265" stroke="#4a5568" stroke-width="2"/>
+  <line x1="450" y1="265" x2="450" y2="295" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="615" y="258" text-anchor="middle" font-size="10" fill="#4a5568">status check posted to PR</text>
+
+  <!-- Decision diamond (status result) -->
+  <polygon points="450,300 540,360 450,420 360,360" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="450" y="355" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">Status</text>
+  <text x="450" y="375" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">result?</text>
+
+  <!-- PASS path -->
+  <line x1="540" y1="360" x2="640" y2="360" stroke="#2f855a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="590" y="350" text-anchor="middle" font-size="11" font-weight="600" fill="#2f855a">PASS</text>
+
+  <rect x="645" y="335" width="200" height="50" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="745" y="358" text-anchor="middle" font-size="12" font-weight="600" fill="#15803d">Merge enabled</text>
+  <text x="745" y="375" text-anchor="middle" font-size="10" fill="#166534">(pending other required checks)</text>
+
+  <!-- HARD_FAIL path -->
+  <line x1="360" y1="360" x2="260" y2="360" stroke="#c53030" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="310" y="350" text-anchor="middle" font-size="11" font-weight="600" fill="#c53030">HARD_FAIL</text>
+
+  <rect x="55" y="335" width="200" height="50" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="155" y="358" text-anchor="middle" font-size="12" font-weight="600" fill="#991b1b">Merge blocked</text>
+  <text x="155" y="375" text-anchor="middle" font-size="10" fill="#7f1d1d">required check failed</text>
+
+  <!-- Layer labels -->
+  <rect x="50" y="475" width="800" height="2" fill="#e2e8f0"/>
+  <text x="450" y="500" text-anchor="middle" font-size="14" font-weight="600" fill="#1a202c">Why both layers are required</text>
+
+  <!-- Layer 1 -->
+  <rect x="50" y="520" width="380" height="140" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="240" y="545" text-anchor="middle" font-size="13" font-weight="600" fill="#1e40af">Layer 1: Azure DevOps Branch Policy</text>
+
+  <text x="65" y="570" font-size="11" fill="#334155">• Forces PRs (no direct push to main)</text>
+  <text x="65" y="590" font-size="11" fill="#334155">• Requires Prisma status check to pass</text>
+  <text x="65" y="610" font-size="11" fill="#334155">• Restricts bypass permissions</text>
+  <text x="65" y="635" font-size="11" font-style="italic" fill="#64748b">Without this layer: scanner findings have no</text>
+  <text x="65" y="650" font-size="11" font-style="italic" fill="#64748b">enforcement, devs can push directly to main</text>
+
+  <!-- Layer 2 -->
+  <rect x="470" y="520" width="380" height="140" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="660" y="545" text-anchor="middle" font-size="13" font-weight="600" fill="#15803d">Layer 2: Prisma Cloud Enforcement</text>
+
+  <text x="485" y="570" font-size="11" fill="#334155">• Scans PR diff (not full branch)</text>
+  <text x="485" y="590" font-size="11" fill="#334155">• Evaluates findings against severity rules</text>
+  <text x="485" y="610" font-size="11" fill="#334155">• Posts HARD_FAIL/SOFT_FAIL/PASS to ADO</text>
+  <text x="485" y="635" font-size="11" font-style="italic" fill="#64748b">Without this layer: branch policy has nothing</text>
+  <text x="485" y="650" font-size="11" font-style="italic" fill="#64748b">to evaluate, gate is decoration</text>
+</svg>

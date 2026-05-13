@@ -1,0 +1,59 @@
+# Local configuration / secrets
+.env
+.env.*
+*.local
+secrets.json
+*.key
+*.pem
+*.pfx
+*.p12
+*.crt
+*.cer
+*.jks
+*.kdbx
+
+# Terraform state and vars (often contain credentials)
+*.tfvars
+*.tfvars.json
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Cloud / local credential stores
+.aws/
+.azure/
+.kube/
+.npmrc
+*.pypirc
+
+# Local secret scan artifacts
+gitleaks-report.*
+trufflehog-report.*
+.gitleaks.toml.local
+
+# Tool runtime artifacts
+tools/Add-PrismaGate_*.log
+tools/repos.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local notes (don't commit work-in-progress drafts)
+notes/
+drafts/
+*.draft.md
+
+# OneDrive / personal sync
+.OneDrive/
+
+# Generated outputs and backups
+*.log
+*.tmp
+*.bak

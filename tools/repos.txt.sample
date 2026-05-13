@@ -1,0 +1,12 @@
+# Sample repos list for bulk processing
+# One repo name per line. Lines starting with # are ignored.
+# Use with: .\Add-PrismaGate.ps1 -RepoList .\repos.txt ...
+
+# Phase 1 rollout — pilot repos
+sample-api-repo
+sample-service-repo
+sample-web-repo
+
+# Phase 2 rollout — uncomment when ready
+# sample-internal-tool
+# sample-legacy-monolith
